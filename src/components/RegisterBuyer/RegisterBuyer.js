@@ -129,7 +129,7 @@ class RegisterBuyer extends React.Component{
                             onClick={this.onSubmitRegister} 
                             type="submit" 
                             value="Register" 
-                            className="ttu bn pv3 ph4 f6 bg-blue white b br-pill pointer grow" />
+                            className="ttu bn pv3 ph4 f6 bg-orange white b br-pill pointer grow" />
                         </div>
                     </article>
                 </div>

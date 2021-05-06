@@ -1,0 +1,19 @@
+.shopdisplay{
+    font-family: sans-serif;
+}
+.shopdisplay .card{
+    text-align: left;
+    margin: 5rem 20rem;
+}
+
+@media (max-width: 1500px){
+    .shopdisplay .card{
+        margin: 3rem 17rem 1rem;
+    }
+}
+
+@media (max-width: 1000px){
+    .shopdisplay .card{
+        margin: 3rem 5rem 1rem;
+    }
+}

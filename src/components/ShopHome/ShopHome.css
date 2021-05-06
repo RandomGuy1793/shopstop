@@ -1,18 +1,36 @@
 .shophome{
     font-family: sans-serif;
-    
 }
-.shophome .background{
-    /*background-image: url(background.jpg);*/
-    height: 49rem;
-    padding-top: 1.5rem;
-    
-}
-.shophome button img{
-    width: 30px;
-}
-.shophome .profile-btn{
+
+.shophome .button-bar{
     position: relative;
-    left: 45rem;
     margin-bottom: 3rem;
+    margin-right: 2rem;
+}
+
+.shophome .buttons{
+    margin: 1.2rem;
+}
+
+.shophome .card{
+    margin: 3rem 29rem 1rem;
+    padding: 1rem 9rem 1rem;
+    background-color: rgb(255, 245, 245);
+}
+.shophome .inputs{
+    margin-top: 1.7rem;
+}
+
+@media (max-width: 1500px){
+    .shophome .card{
+        margin: 3rem 15rem 1rem;
+        padding: 1rem 7rem 1rem;
+    }
+}
+
+@media (max-width: 1000px){
+    .shophome .card{
+        margin: 3rem 7rem 1rem;
+        padding: 1rem 4rem 1rem;
+    }
 }

@@ -1,32 +1,42 @@
-.userhome .background{
-    background-image: url(background.jpg);
-    height: 49rem;
-    padding-top: 1.5rem;
-    
+.userhome {
+
+}
+
+.userhome .search{
+    padding-top: 2rem;
+    padding-left: 30rem;
+    padding-right: 30rem;
+    margin-bottom: 10rem;
 }
 
 .userhome .search-bar{
-    margin-right: 1rem;
+    margin-right: 1.3rem;
 }
 
-.userhome hr{
-    width: 10%;
-}
-
-.userhome .recent-order{
-    font-family: sans-serif;
-}
-
-.userhome .more-order{
-    font-weight: 400;
-    color: grey;
-}
-
-.userhome button img{
-    width: 30px;
-}
-.userhome .profile-btn{
+.userhome .button-bar{
     position: relative;
-    left: 45rem;
     margin-bottom: 3rem;
+    margin-right: 2rem;
+}
+
+.userhome .buttons{
+    margin: 1.2rem;
+}
+
+@media (max-width: 1300px){
+    .userhome .input-group{
+        padding-left: 15rem;
+        padding-right: 12rem;
+    }
+}
+
+@media (max-width: 800px){
+    .userhome .input-group{
+        padding-left: 6rem;
+        padding-right: 4rem;
+    }
+    .userhome .button-bar{
+        position: relative;
+        margin-bottom: 3rem;
+    }
 }

@@ -78,7 +78,7 @@ import './SignInBuyer.css'
                             </div>
                             <div className="tc">
                                 <input type="submit" 
-                                onClick={this.onSubmitSignin} value="Sign In" className="ttu bn pv3 ph4 f6 bg-blue white b br-pill pointer grow" />
+                                onClick={this.onSubmitSignin} value="Sign In" className="ttu bn pv3 ph4 f6 bg-orange white b br-pill pointer grow" />
                             </div>
                         </article>
                     </div>
