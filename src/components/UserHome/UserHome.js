@@ -101,7 +101,6 @@ class UserHome extends Component {
                         />
                     })
                 }
-                <Shop />
             </div>
         )
     }

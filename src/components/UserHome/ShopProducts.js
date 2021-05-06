@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Product from './Product'
+import './ShopProducts.css'
 
 class ShopProducts extends Component {
     constructor(props){
@@ -28,7 +29,8 @@ class ShopProducts extends Component {
     render(){
         const {products}=this.state;
         return(
-          <div>
+          <div className="shopproducts">
+                <h2 className="heading">Products</h2>
               {
                   products.map((cur_product,ind)=>{
                    return <Product
@@ -39,9 +41,7 @@ class ShopProducts extends Component {
                      qty={cur_product.quantity_available}
                    />
                   })
-                  
               }
-
           </div>
         )
     }
