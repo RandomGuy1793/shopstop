@@ -80,6 +80,34 @@ class App extends Component {
  
   }
 
+  changeUser=(user)=>{
+    this.setState({user:{ 
+      cust_id:this.state.user.cust_id,
+      username:user.username,
+      mail:user.email,
+      password:user.password,
+      phone:user.phone,
+      houseno:user.flatno,
+      area:user.area,
+      city:user.city,
+      pincode:user.pincode }})
+      
+      
+  }
+  
+  changeShop=(shop)=>{
+    this.setState({shop:{ 
+      shopid:this.state.shop.shopid,
+      shop_email:shop.email,
+      shop_password:shop.password,
+      shop_name:shop.shopname,
+      phone:shop.phone,
+      address:shop.address,
+      category:shop.category,
+      pincode:shop.pincode}})
+ 
+  }
+
   onRouteChange = (route) => {
     this.setState({route: route});
   }
@@ -115,10 +143,10 @@ class App extends Component {
       now= <UserOrders onRouteChange={this.onRouteChange} />
     }
     else if(route === 'edituserdetails'){
-now =  <EditUserDetails onRouteChange={this.onRouteChange} />
+now =  <EditUserDetails onRouteChange={this.onRouteChange} state={this.state.user} changeUser={this.changeUser}/>
     }
     else if(route === 'editshopdetails'){
-   now=  <EditShopDetails onRouteChange={this.onRouteChange} />
+   now=  <EditShopDetails onRouteChange={this.onRouteChange} state={this.state.shop} changeShop={this.changeShop}/>
     }
     else if(route==='shophome'){
      now= <ShopHome 

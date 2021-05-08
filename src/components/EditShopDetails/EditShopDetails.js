@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import EditDetailsField from "../EditDetailsField/EditDetailsField"
-const EditShopDetails = ({ onRouteChange }) => {
-    const [details, setDetails] = useState({ email: "", password: "", shopname: "", phone: "", address: "", category: "", pincode: "" })
+const EditShopDetails = (props) => {
+    const [details, setDetails] = useState({
+        email: props.state.shop_email,
+        password: props.state.shop_password,
+        shopname: props.state.shop_name,
+        phone: props.state.phone,
+        address: props.state.address,
+        category: props.state.category,
+        pincode: props.state.pincode
+    })
     function handleChange(event) {
         const { value, name } = event.target
         setDetails((prev) => {
@@ -18,17 +26,17 @@ const EditShopDetails = ({ onRouteChange }) => {
     return (
         <div className="edituserdetails">
             <h2 className="b pa4">Edit Your Details</h2>
-            <EditDetailsField title={"Email"} type={"email"} onChange={handleChange} />
+            <EditDetailsField title={"Email"} type={"email"} onChange={handleChange} value={details.email} />
             <EditDetailsField title={"Password"} type={"password"} onChange={handleChange} />
-            <EditDetailsField title={"ShopName"} type={"text"} onChange={handleChange} />
-            <EditDetailsField title={"Phone"} type={"number"} onChange={handleChange} />
-            <EditDetailsField title={"Address"} type={"text"} onChange={handleChange} />
-            <EditDetailsField title={"Category"} type={"text"} onChange={handleChange} />
-            <EditDetailsField title={"Pincode"} type={"number"} onChange={handleChange} />
+            <EditDetailsField title={"ShopName"} type={"text"} onChange={handleChange} value={details.shopname} />
+            <EditDetailsField title={"Phone"} type={"number"} onChange={handleChange} value={details.phone} />
+            <EditDetailsField title={"Address"} type={"text"} onChange={handleChange} value={details.address} />
+            <EditDetailsField title={"Category"} type={"text"} onChange={handleChange} value={details.category} />
+            <EditDetailsField title={"Pincode"} type={"number"} onChange={handleChange} value={details.pincode} />
 
             <div className="tc submit-btn pa5">
                 <input type="submit"
-                    onClick={() => onRouteChange('shophome')} value="Save Changes" className="btn bg-orange white pointer grow" />
+                    onClick={() => { props.changeShop(details); props.onRouteChange('shophome') }} value="Save Changes" className="btn bg-orange white pointer grow" />
             </div>
         </div>
     )
