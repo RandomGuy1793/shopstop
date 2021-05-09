@@ -3,6 +3,14 @@
     margin: 3rem 20rem;
 }
 
+.proddisplay .qty-select{
+    text-align: right;
+}
+
+.proddisplay .btn-qty{
+    margin: 0.4rem;
+}
+
 @media (max-width: 1500px){
     .proddisplay .card{
         margin: 3rem 17rem 1rem;

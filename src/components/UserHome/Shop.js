@@ -1,17 +1,17 @@
 import ShopProducts from './ShopProducts';
-import { Component } from 'react';
 import './Shop.css'
+import { Component } from 'react';
 class Shop extends Component {
     constructor(props) {
         super(props);
     }
     handleClick = () => {
-        this.props.routeShopProducts(this.props.shop);
-        // console.log(this.props.shop)
-        // console.log(this.props.routeShopProducts)
+        console.log(this.props.shop.shopid)
+        this.props.handleUserRouteChange("shopproduct", this.props.shop.shopid);
+
     }
     render() {
-        const { shop, name, pincode, address, category } = this.props;
+        const { name, pincode, address, category } = this.props;
         return (
             <div className="shopdisplay">
                 <div onClick={this.handleClick} className="card grow">

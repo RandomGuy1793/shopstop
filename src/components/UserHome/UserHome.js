@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import Shop from './Shop'
+import ShopProducts from './ShopProducts'
 import './UserHome.css'
+import Cart from './Cart'
+import UserOrder from '../UserOrders/UserOrders'
 
 class UserHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
             search: "",
-            all: true,
+            userRoute: "home",
+            shopid: "",
             currentshop: []
         }
     }
@@ -50,25 +54,55 @@ class UserHome extends Component {
         this.props.clearState();
 
     }
+    // https://api-shopstop.herokuapp.com/
+    handleAllShop = () => {
+        let { currentshop } = this.state;
+        // fetch("http://localhost:3001/checkshop",{
+        fetch("https://api-shopstop.herokuapp.com/checkshop", {
+            method: 'get',
+            headers: { 'Content-Type': "application/json" },
+        })
+            .then(res => res.json())
+            .then(shop => {
+                this.setState({ currentshop: shop })
+                console.log(currentshop)
+            })
+            .catch(console.log)
+        console.log(currentshop)
+
+    }
+    handleUserRouteChange = (route, shopid) => {
+        console.log("inside handle user", route, shopid)
+        this.setState({ userRoute: route, shopid: shopid })
+    }
+    handleCart = () => {
+        this.handleUserRouteChange('cart', "")
+    }
+
+
+
 
     render() {
-        const { onRouteChange } = this.props;
-        let { currentshop } = this.state;
-        return (
-            <div className="userhome">
+        const { onRouteChange, user } = this.props;
+        let { currentshop, userRoute } = this.state;
+        let now;
+        if (userRoute === "home") {
+            now = <div className="userhome">
                 <div className="button-bar">
                     <nav className="f6 fw6 ttu v-mid tracked flex justify-end">
                         <div className="buttons">
-                            <p onClick={() => onRouteChange('userorders')}
-                                className="blue di pointer underline ph1">Orders</p>
+                            <p onClick={() => this.handleUserRouteChange("orders", "")}
+                                className="blue di pointer underline ph1">My Orders</p>
                         </div>
                         <div className="buttons">
-                            <p onClick={() => onRouteChange('edituserdetails')}
-                                className="blue di pointer underline ph1">Edit Profile</p>
+                            <p onClick={this.handleCart}
+                                className="blue di pointer underline ph1">Cart</p>
                         </div>
                         <button onClick={this.handleClearState} className="buttons bn ttu ph3 f6 bg-orange white b br-pill pointer grow">Log Out</button>
                     </nav>
                 </div>
+
+
                 <form onSubmit={this.onSubmitChange}>
                     <div className="input-group search">
                         <input
@@ -88,6 +122,9 @@ class UserHome extends Component {
                         </button>
                     </div>
                 </form>
+                <p onClick={this.handleAllShop}
+                    className="all-shops ttu b blue di pointer underline ph1">All Shops</p>
+
                 {
                     currentshop.map((cur_shop, ind) => {
                         return <Shop
@@ -97,11 +134,83 @@ class UserHome extends Component {
                             pincode={cur_shop.locality_pin_code}
                             address={cur_shop.address}
                             category={cur_shop.category}
-                            routeShopProducts={this.props.routeShopProducts}
+                            handleUserRouteChange={this.handleUserRouteChange}
+
                         />
                     })
                 }
-            </div>
+
+            </div>;
+        }
+        else if (userRoute === "shopproduct") {
+            now =
+                <div className="userhome">
+                    <div className="button-bar">
+                        <nav className="f6 fw6 ttu v-mid tracked flex justify-end">
+                            <div className="buttons">
+                                <p onClick={() => this.handleUserRouteChange("orders", "")}
+                                    className="blue di pointer underline ph1">My Orders</p>
+                            </div>
+                            <div className="buttons">
+                                <p onClick={this.handleCart}
+                                    className="blue di pointer underline ph1">Cart</p>
+                            </div>
+                            <button onClick={this.handleClearState} className="buttons bn ttu ph3 f6 bg-orange white b br-pill pointer grow">Log Out</button>
+                        </nav>
+                    </div>
+
+                    <ShopProducts
+                        shopid={this.state.shopid}
+                        cust_id={this.props.user.cust_id}
+                        handleUserRouteChange={this.handleUserRouteChange}
+                    />
+                </div>
+
+        }
+        else if (userRoute === "cart") {
+            now =
+                <div className="userhome">
+                    <div className="button-bar">
+                        <nav className="f6 fw6 ttu v-mid tracked flex justify-end">
+                            <div className="buttons">
+                                <p onClick={() => this.handleUserRouteChange("orders", "")}
+                                    className="blue di pointer underline ph1">My Orders</p>
+                            </div>
+
+                            <button onClick={this.handleClearState} className="buttons bn ttu ph3 f6 bg-orange white b br-pill pointer grow">Log Out</button>
+                        </nav>
+                        <div className="buttons">
+                            <p onClick={() => this.handleUserRouteChange("home", "")}
+                                className="ttu b blue di pointer underline ph1 ">Back to Shops</p>
+                        </div>
+                    </div>
+                    <Cart cust_id={user.cust_id} />
+                </div>
+        }
+
+        else if (userRoute === 'orders') {
+            now =
+                <div className="userhome">
+                    <div className="button-bar">
+                        <nav className="f6 fw6 ttu v-mid tracked flex justify-end">
+                            <div className="buttons">
+                                <p onClick={this.handleCart}
+                                    className="blue di pointer underline ph1">Cart</p>
+                            </div>
+
+                            <button onClick={this.handleClearState} className="buttons bn ttu ph3 f6 bg-orange white b br-pill pointer grow">Log Out</button>
+                        </nav>
+                        <div className="buttons">
+                            <p onClick={() => this.handleUserRouteChange("home", "")}
+                                className="ttu b blue di pointer underline ph1 ">Back to Shops</p>
+                        </div>
+                    </div>
+                    <UserOrder cust_id={user.cust_id} />
+                </div>
+        }
+
+        return (
+            <div>{now}</div>
         )
     }
 }

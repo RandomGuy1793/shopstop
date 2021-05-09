@@ -1,0 +1,11 @@
+.cart .grand{
+    position: relative;
+    left: 18rem;
+}
+
+@media (max-width: 1300px){
+    .cart .grand{
+        position:static;
+        left: 1rem;
+    }
+}

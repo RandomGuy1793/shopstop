@@ -42,14 +42,6 @@ class ShopHome extends Component {
             <div className="shophome">
                 <div className="button-bar">
                     <nav className="f6 fw6 ttu v-mid tracked flex justify-end">
-                        <div className="buttons">
-                            <p onClick={() => onRouteChange('shoporders')}
-                                className="blue di pointer underline ph1">Orders</p>
-                        </div>
-                        <div className="buttons">
-                            <p onClick={() => onRouteChange('editshopdetails')}
-                                className="blue di pointer underline ph1">Edit Profile</p>
-                        </div>
                         <button onClick={() => clearState()} className="buttons bn ttu ph3 f6 bg-orange white b br-pill pointer grow">Log Out</button>
                     </nav>
                 </div>
@@ -114,5 +106,3 @@ class ShopHome extends Component {
     }
 }
 export default ShopHome;
-
-//<button onClick={() => clearState()} className="buttons bn ttu ph3 f6 bg-orange white b br-pill pointer grow">

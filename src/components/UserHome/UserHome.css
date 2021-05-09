@@ -6,7 +6,7 @@
     padding-top: 2rem;
     padding-left: 30rem;
     padding-right: 30rem;
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
 }
 
 .userhome .search-bar{
@@ -21,6 +21,10 @@
 
 .userhome .buttons{
     margin: 1.2rem;
+}
+
+.userhome .all-shops{
+    margin-bottom: 7rem;
 }
 
 @media (max-width: 1300px){
