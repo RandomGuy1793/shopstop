@@ -7,14 +7,9 @@ const Navigation = ({onRouteChange}) => {
     return (
 
         <header className="bg-black-90 sticky w-100 ph3 pv3 pv4-ns ph4-m  flex items-center justify-between">
-            
-        
-        
         <img  
         onClick={() => onRouteChange('usertype')} 
-        className='w4 pointer' src={Shopstop} alt='Logo' />  
-        
-        
+        className='w4 pointer br3' src={Shopstop} alt='Logo' />  
             <nav className="f6 fw6 ttu v-mid tracked flex justify-end">
                 <p 
                 onClick={() => onRouteChange('usertype')}
